@@ -31,16 +31,6 @@ public class App
 	}
 	public static void main( String[] args )
     {
-    	Prenda.setValorFijo(50);
-        Sacos saco = new Sacos(100,true);
-        Venta venta = new Venta(saco,5,new Fecha(14,5,2016));
-        Venta venta1 = new Venta(saco,7,new Fecha(14,5,2016));
-        Venta venta2 = new Venta(saco,8,new Fecha(14,5,2016));
-        Fecha fecha = new Fecha(14,5,2016);
-        App aplicacion = new App();
-        aplicacion.getVentasTotales().add(venta);
-        aplicacion.getVentasTotales().add(venta1); 
-        aplicacion.getVentasTotales().add(venta2); 
-        System.out.println(aplicacion.calcularGanancia(fecha));
+
     }
 }

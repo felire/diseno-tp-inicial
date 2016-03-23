@@ -15,6 +15,26 @@ public class AppTest
      *
      * @param testName name of the test case
      */
+	App aplicacion;
+	Venta venta;
+    Venta venta1;
+    Venta venta2;
+    Camisas camisa;
+    Pantalones pantalon;
+    Sacos saco;
+	public void setUp(){
+		Prenda.setValorFijo(50);
+		this.aplicacion = new App();
+		this.camisa = new Camisas(200,true);
+		this.pantalon = new Pantalones(250,false);
+		this.saco = new Sacos(300,true);
+		venta = new Venta(camisa,2,new Fecha(2,6,2015));
+		venta1 = new Venta(pantalon,3,new Fecha(2,6,2015));
+		venta2 = new Venta(saco,1,new Fecha(3,6,2015));
+		this.aplicacion.getVentasTotales().add(venta);
+		this.aplicacion.getVentasTotales().add(venta1);
+		this.aplicacion.getVentasTotales().add(venta2);
+	}
     public AppTest( String testName )
     {
         super( testName );
@@ -27,12 +47,9 @@ public class AppTest
     {
         return new TestSuite( AppTest.class );
     }
-
-    /**
-     * Rigourous Test :-)
-     */
     public void testApp()
     {
-        assertTrue( true );
+    	this.assertEquals(1550,(int) this.aplicacion.calcularGanancia(new Fecha(2,6,2015)));
+        
     }
 }
