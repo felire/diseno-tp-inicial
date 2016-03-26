@@ -13,6 +13,7 @@ import javax.swing.JFrame;
 public class App 
 {
 	private ArrayList<Venta> ventasTotales;
+	private ArrayList<Venta> ventasTotalesAux;
 	public App(){
 		ventasTotales = new ArrayList<Venta>();
 	}
@@ -25,9 +26,9 @@ public class App
 	public double calcularGanancia(Fecha fecha){
 		int i = 0;
 		double acum = 0;
-		this.ventasTotales = (ArrayList<Venta>) this.ventasTotales.stream().filter(venta1 -> venta1.mismaFecha(fecha)).collect(Collectors.toList());
-		for(;i<this.ventasTotales.size();i++){
-			acum += ventasTotales.get(i).ganancia();
+		ventasTotalesAux = (ArrayList<Venta>) this.ventasTotales.stream().filter(venta1 -> venta1.mismaFecha(fecha)).collect(Collectors.toList());
+		for(;i<this.ventasTotalesAux.size();i++){
+			acum += ventasTotalesAux.get(i).ganancia();
 		}
 		return acum;
 	}
