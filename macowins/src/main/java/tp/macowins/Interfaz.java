@@ -117,21 +117,21 @@ public class Interfaz extends JPanel implements ActionListener{
 	public void actionPerformed(ActionEvent e) {
 		String seleccion;
 		Venta venta;
-		// Esto lo seteo porque sino java me tira error
-		venta = new Venta(new Sacos(300, importado.isSelected()), Integer.parseInt((String)combo2.getSelectedItem()), new Fecha(Integer.parseInt((String)dia.getSelectedItem()), darFecha((String)mes.getSelectedItem()),Integer.parseInt((String)anio.getSelectedItem())));
 		Object fuente = e.getSource();
 		if(boton1 == fuente){
 		seleccion = (String) combo1.getSelectedItem();
 		if(seleccion.equals("Camisas")){
 			venta = new Venta(new Camisas(200, importado.isSelected()), Integer.parseInt((String)combo2.getSelectedItem()), new Fecha(Integer.parseInt((String)dia.getSelectedItem()), darFecha((String)mes.getSelectedItem()),Integer.parseInt((String)anio.getSelectedItem())));
+			aplicacion.getVentasTotales().add(venta);
 		}
 		if(seleccion.equals("Pantalones")){
 			venta = new Venta(new Pantalones(250, importado.isSelected()), Integer.parseInt((String)combo2.getSelectedItem()), new Fecha(Integer.parseInt((String)dia.getSelectedItem()), darFecha((String)mes.getSelectedItem()),Integer.parseInt((String)anio.getSelectedItem())));
+			aplicacion.getVentasTotales().add(venta);
 		}
 		if(seleccion.equals("Sacos")){
 			venta = new Venta(new Sacos(300, importado.isSelected()), Integer.parseInt((String)combo2.getSelectedItem()), new Fecha(Integer.parseInt((String)dia.getSelectedItem()), darFecha((String)mes.getSelectedItem()),Integer.parseInt((String)anio.getSelectedItem())));
+			aplicacion.getVentasTotales().add(venta);
 		}
-		aplicacion.getVentasTotales().add(venta);
 		}
 		else{
 			texto.setText("Su ganancia total en el dia elegido es: "+ String.valueOf(aplicacion.calcularGanancia(new Fecha(Integer.parseInt((String)diaCalculo.getSelectedItem()), darFecha((String)mesCalculo.getSelectedItem()),Integer.parseInt((String)anioCalculo.getSelectedItem())))));
