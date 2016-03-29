@@ -1,21 +1,24 @@
 package tp.macowins;
 
-public class Venta
-{
-	public String fecha;
-	public Prenda producto;
-	public int cantidad;
-	
-	public Venta(Prenda prod, int cant, String dia)
-	{
-		producto=prod;
-		cantidad=cant;
-		fecha=dia;
+public class Venta {
+	private Prenda unaPrenda;
+	private int cantidad;
+	private Fecha fecha;
+	public Venta (Prenda unaPrenda, int cantidad, Fecha fecha){
+		this.unaPrenda = unaPrenda;
+		this.cantidad = cantidad;
+		this.fecha = fecha;
 	}
-	
-	public double valor()
-	{
-		double precio=producto.precioFinal();
-		return (precio*cantidad);
+	public boolean mismaFecha(Fecha unaFecha){
+		return fecha.compararFecha(unaFecha);
+	}
+	public Fecha getFecha() {
+		return fecha;
+	}
+	public void setFecha(Fecha fecha) {
+		this.fecha = fecha;
+	}
+	public double ganancia(){
+		return cantidad*unaPrenda.precioFinal();
 	}
 }
