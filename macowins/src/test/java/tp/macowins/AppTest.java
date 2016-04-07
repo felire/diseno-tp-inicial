@@ -1,14 +1,12 @@
 package tp.macowins;
 
-import junit.framework.Test;
-import junit.framework.TestCase;
-import junit.framework.TestSuite;
+import org.junit.Before;
+import org.junit.Test;
 
 /**
  * Unit test for simple App.
  */
-public class AppTest 
-    extends TestCase
+public class AppTest
 {
     /**
      * Create the test case
@@ -22,6 +20,8 @@ public class AppTest
     Camisas camisa;
     Pantalones pantalon;
     Sacos saco;
+    
+    @Before
 	public void setUp(){
 		Prenda.setValorFijo(50);
 		this.aplicacion = new App();
@@ -35,10 +35,7 @@ public class AppTest
 		this.aplicacion.getVentasTotales().add(venta1);
 		this.aplicacion.getVentasTotales().add(venta2);
 	}
-    public AppTest( String testName )
-    {
-        super( testName );
-    }
+
 
     /**
      * @return the suite of tests being tested

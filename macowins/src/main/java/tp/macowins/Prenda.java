@@ -2,8 +2,9 @@ package tp.macowins;
 
 public abstract class Prenda {
 	static private int valorFijo;
-	protected int precioBase;
 	protected boolean importada;
+	protected Marca marca;
+	public abstract int precioBase();
 	
 	public static int getValorFijo() {
 		return valorFijo;
@@ -12,13 +13,7 @@ public abstract class Prenda {
 	public static void setValorFijo(int valorFijo) {
 		Prenda.valorFijo = valorFijo;
 	}
-	public int getPrecioBase() {
-		return precioBase;
-	}
 
-	public void setPrecioBase(int precioBase) {
-		this.precioBase = precioBase;
-	}
 	public boolean isImportada() {
 		return importada;
 	}
@@ -27,8 +22,13 @@ public abstract class Prenda {
 		this.importada = importada;
 	}
 	
-	public double precioFinal(){
-		return (this.valorFijo + this.precioBase)*this.importada();
+	public double precioOriginal(){
+		return (this.valorFijo + this.precioBase())*this.importada();
+	}
+	
+	public double precioFinal()
+	{
+		return marca.coeficiente(this.precioOriginal())*this.precioOriginal();
 	}
 	
 	public double importada(){

@@ -1,8 +1,17 @@
 package tp.macowins;
 
 public class Sacos extends Prenda{
-	public Sacos(int precioBase, boolean importada){
-		this.precioBase = precioBase;
-		this.importada = importada;
+	private int botones;
+	private int precioBase;
+	
+	public Sacos(int botones, boolean importada){
+		this.botones=botones;
+		this.precioBase = 300;
+		this.importada = importada;		
+	}
+	
+	public int precioBase()
+	{
+		return precioBase+10*this.botones;
 	}
 }
