@@ -34,12 +34,5 @@ public class App
 	public static void main( String[] args )
     {
 		Prenda.setValorFijo(50);
-		App aplicacion = new App();
-		JFrame ventana = new JFrame("MacoWins");
-		ventana.setExtendedState(JFrame.MAXIMIZED_BOTH);
-		ventana.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		Interfaz panel = new Interfaz(aplicacion);
-		ventana.add(panel);
-		ventana.setVisible(true);
     }
 }
