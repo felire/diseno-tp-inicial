@@ -3,50 +3,34 @@ package tp.macowins;
 import org.junit.Before;
 import org.junit.Test;
 
+import junit.framework.Assert;
+
 /**
  * Unit test for simple App.
  */
 public class AppTest
 {
-    /**
-     * Create the test case
-     *
-     * @param testName name of the test case
-     */
-	App aplicacion;
-	Venta venta;
-    Venta venta1;
-    Venta venta2;
-    Camisas camisa;
-    Pantalones pantalon;
-    Sacos saco;
-    
-    @Before
-	public void setUp(){
+	App aplicacion = new App();
+	@Before
+	public void init()
+	{
 		Prenda.setValorFijo(50);
-		this.aplicacion = new App();
-		this.camisa = new Camisas(200,true);
-		this.pantalon = new Pantalones(250,false);
-		this.saco = new Sacos(300,true);
-		venta = new Venta(camisa,2,new Fecha(2,6,2015));
-		venta1 = new Venta(pantalon,3,new Fecha(2,6,2015));
-		venta2 = new Venta(saco,1,new Fecha(3,6,2015));
-		this.aplicacion.getVentasTotales().add(venta);
-		this.aplicacion.getVentasTotales().add(venta1);
-		this.aplicacion.getVentasTotales().add(venta2);
+		Sarkany sarkany = new Sarkany();
+		Armani armani = new Armani();
+		Prenda saco = new Sacos(10,true);
+		Prenda zapato = new Zapatos(5,true);
+		saco.setMarca(sarkany);
+		zapato.setMarca(armani);		
+		Venta venta1 = new Venta(saco,3,new Fecha(1,1,1));
+		Venta venta2 = new Venta(zapato,2,new Fecha(1,1,1));
+		aplicacion.getVentasTotales().add(venta1);
+		aplicacion.getVentasTotales().add(venta2);
 	}
-
-
-    /**
-     * @return the suite of tests being tested
-     */
-    public static Test suite()
+    @Test
+    public void test1()
     {
-        return new TestSuite( AppTest.class );
+    	Assert.assertEquals(4407.0, aplicacion.calcularGanancia(new Fecha(1,1,1)));
     }
-    public void testApp()
-    {
-    	this.assertEquals(1550,(int) this.aplicacion.calcularGanancia(new Fecha(2,6,2015)));
-        
-    }
+    
+ 
 }

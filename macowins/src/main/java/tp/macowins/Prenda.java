@@ -4,6 +4,14 @@ public abstract class Prenda {
 	static private int valorFijo;
 	protected boolean importada;
 	protected Marca marca;
+	public Marca getMarca() {
+		return marca;
+	}
+
+	public void setMarca(Marca marca) {
+		this.marca = marca;
+	}
+
 	public abstract int precioBase();
 	
 	public static int getValorFijo() {
